@@ -6,6 +6,8 @@ public class LevelBuilder : MonoBehaviour {
 	public TextAsset level1;
 
 	void Awake() {
+		Transform floorTile = Resources.Load<Transform> ("Floor");
+
 		string rawLevel = level1.text;
 		string[] lines = rawLevel.Split ('\n');
 		for (int lineNum = 0; lineNum < lines.Length; lineNum++) {
@@ -19,13 +21,14 @@ public class LevelBuilder : MonoBehaviour {
 				if (spawn != null) {
 					Instantiate(spawn, position, Quaternion.identity);
 				}
+				Instantiate(floorTile, floorTile.position + position, floorTile.rotation);
 			}
 		}
 	}
 
 	Object SpawnForChar(string character) {
 		switch (character) {
-		case " ": return null;
+		case " ": return null; //Resources.Load<Transform>("Floor");
 		case "-": return null; //Resources.Load('point');
 		case "E": return Resources.Load("Enemy");
 		case "@": return Resources.Load("User");

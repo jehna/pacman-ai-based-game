@@ -34,6 +34,9 @@ public class User : MonoBehaviour {
 					break;
 			}
 
+			// Check if allowed
+			if (Physics.Linecast(transform.position, transform.position + (Vector3)move, LayerMask.NameToLayer("wall"))) return;
+
 			this.transform.Translate(move);
 			
 			foreach (Enemy enemy in FindObjectsOfType<Enemy>()) {
