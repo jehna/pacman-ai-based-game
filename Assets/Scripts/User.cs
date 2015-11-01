@@ -13,6 +13,9 @@ public class User : MonoBehaviour {
 
 	public bool isAlive = true;
 
+	private Vector2 touchBeganPosition;
+
+
 	void Start() {
 	}
 
@@ -60,12 +63,15 @@ public class User : MonoBehaviour {
 
 		Touch touch = Input.GetTouch(0);
 
+		if (touch.phase == TouchPhase.Began) touchBeganPosition = touch.position;
 		if (touch.phase != TouchPhase.Ended) return SwipeDirection.None;
 
-		if (Mathf.Abs (touch.deltaPosition.x) > Mathf.Abs (touch.deltaPosition.y)) {
-			return touch.deltaPosition.x > 0 ? SwipeDirection.Right : SwipeDirection.Left;
+		Vector2 delta = touch.position - touchBeganPosition;
+		Debug.Log (delta);
+		if (Mathf.Abs (delta.x) > Mathf.Abs (delta.y)) {
+			return delta.x > 0 ? SwipeDirection.Right : SwipeDirection.Left;
 		} else {
-			return touch.deltaPosition.y > 0 ? SwipeDirection.Up : SwipeDirection.Down;
+			return delta.y > 0 ? SwipeDirection.Up : SwipeDirection.Down;
 		}
 	}
 

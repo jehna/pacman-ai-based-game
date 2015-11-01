@@ -10,7 +10,7 @@ public class Restart : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Return)) {
+		if (Input.GetKeyDown (KeyCode.Return) || Input.GetTouch(0).phase == TouchPhase.Began) {
 			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
