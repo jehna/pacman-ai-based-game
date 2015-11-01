@@ -28,7 +28,7 @@ public class LevelBuilder : MonoBehaviour {
 
 	Object SpawnForChar(string character) {
 		switch (character) {
-		case " ": return null; //Resources.Load<Transform>("Floor");
+		case " ": return Resources.Load<Transform>("Point");
 		case "-": return null; //Resources.Load('point');
 		case "E": return Resources.Load("Enemy");
 		case "@": return Resources.Load("User");

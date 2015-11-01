@@ -28,6 +28,12 @@ public class Enemy : MonoBehaviour {
 	
 	}
 
+	void OnTriggerEnter(Collider collision) {
+		if (collision.gameObject.GetComponent<User> ()) {
+			Game.Lose();
+		}
+	}
+
 	public void Move() {
 		// Check if we can go to current dir
 		if (currentDirection != Vector2.zero) {
@@ -45,7 +51,7 @@ public class Enemy : MonoBehaviour {
 			if (movement == -currentDirection) continue;
 
 			// Cannot go this way
-			if (Physics.Linecast(transform.position, transform.position + (Vector3)movement, LayerMask.NameToLayer("wall"))) continue;
+			if (Physics.Linecast(transform.position, transform.position + (Vector3)movement, 1 << LayerMask.NameToLayer("Wall"))) continue;
 
 			float currDistance = ((Vector2)user.transform.position - ((Vector2)transform.position + movement)).SqrMagnitude();
 			if (currDistance < closest) {

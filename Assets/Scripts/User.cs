@@ -11,11 +11,16 @@ public class User : MonoBehaviour {
 		None
 	}
 
+	public bool isAlive = true;
+
 	void Start() {
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (!isAlive)
+			return;
+
 		SwipeDirection currSwipeDir = GetCurrentSwipeDirection ();
 		if (currSwipeDir != SwipeDirection.None) {
 			Vector2 move = Vector2.zero;
@@ -35,7 +40,7 @@ public class User : MonoBehaviour {
 			}
 
 			// Check if allowed
-			if (Physics.Linecast(transform.position, transform.position + (Vector3)move, LayerMask.NameToLayer("wall"))) return;
+			if (Physics.Linecast(transform.position, transform.position + (Vector3)move, 1 << LayerMask.NameToLayer("Wall"))) return;
 
 			this.transform.Translate(move);
 			
