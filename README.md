@@ -2,8 +2,11 @@
 > A simple game intended to run in mobile, with huge respect to the original
 > Pac-Man game and its creator Toru Iwatani.
 
-Currently very early stage testing and prototyping. Might get somewhere, or
-then again it might not.
+This was a MVP version of an idea I wanted to test. As this concept did not work
+as intended, this code is released with MIT license.
+
+Please note that for the time being, I have no intention to continue this game,
+but I'm ofc open to any ideas you might come up with.
 
 ## A big picture
 
@@ -17,15 +20,7 @@ Here's the big picture that this game might try to accomplish:
   continued.
 
 ## Contributions
-First get familiar with [the original Pac-Man's AI][1] and game design.
-
-Contributions are warmly welcome via pull requests.
-
-Please open an issue beforehand and use feature branches.
+Open an issue to suggest any further development of this game.
 
 ## License
-This work is not currently under any license, but if/when the first collaborator
-gets interested or the game gets more mature, I'm happy to openly discuss
-different possible licenses.
-
-[1]:[http://gameinternals.com/post/2072558330/understanding-pac-man-ghost-behavior]
+This work is licensed under MIT license.
